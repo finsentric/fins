@@ -15,8 +15,14 @@ export function Logo({ className = "" }: { className?: string }) {
 
   if (!mounted) {
     return (
-      <div className={`w-[140px] h-[40px] ${className}`}>
-        {/* Placeholder while loading */}
+      <div className={className}>
+        <Image
+          src="/FinSentricLogo_DarkTheme.svg"
+          alt="Finsentric Logo"
+          width={140}
+          height={40}
+          priority
+        />
       </div>
     )
   }
