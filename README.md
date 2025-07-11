@@ -1,90 +1,136 @@
-# GitHub Pages Deployment Guide
+# Finsentric Website
 
-This project is configured to deploy automatically to GitHub Pages using GitHub Actions.
+A modern, responsive website for Finsentric - a revolutionary platform bringing sentiment analysis to the forefront of financial decision-making.
 
-## Prerequisites
+## 🚀 Features
 
-1. Make sure your repository is on GitHub
-2. Ensure you have write access to the repository
+- **Dark Theme First**: Optimized for dark theme with automatic light/dark mode switching
+- **Modern UI**: Built with Next.js 14, TypeScript, and Tailwind CSS
+- **Responsive Design**: Fully responsive across all devices
+- **Performance Optimized**: Fast loading with Next.js optimizations
+- **Accessible**: Built with accessibility in mind
 
-## Setup Steps
+## 🛠️ Tech Stack
 
-### 1. Enable GitHub Pages
+- **Framework**: Next.js 14 with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **UI Components**: Custom components with shadcn/ui
+- **Theme**: Next-themes for dark/light mode
+- **Icons**: Lucide React
+- **Deployment**: Ready for Vercel, Netlify, or any static hosting
 
-1. Go to your repository on GitHub
-2. Navigate to **Settings** → **Pages**
-3. Under **Source**, select **GitHub Actions**
-4. This will allow the workflow to deploy your site
+## 📦 Getting Started
 
-### 2. Configure GitHub Pages Settings
+### Prerequisites
 
-1. In the same **Pages** settings section:
-   - **Source**: GitHub Actions (should be selected)
-   - **Branch**: This will be handled by the workflow
-   - **Custom domain** (optional): Add your custom domain if you have one
+- Node.js 18+ 
+- npm or yarn
 
-### 3. Push Your Code
+### Installation
 
-The deployment will happen automatically when you push to the `main` branch:
-
+1. Clone the repository:
 ```bash
-git add .
-git commit -m "Initial commit for GitHub Pages deployment"
-git push origin main
+git clone https://github.com/finsentric/finsentric_website.git
+cd finsentric_website
 ```
 
-## Manual Deployment
-
-If you want to deploy manually:
-
+2. Install dependencies:
 ```bash
-# Build the project
-npm run export
-
-# The built files will be in the `out` directory
-# You can then upload these files to GitHub Pages manually
+npm install
 ```
 
-## Local Testing
-
-To test the static build locally:
-
+3. Run the development server:
 ```bash
-# Build the project
-npm run export
-
-# Serve the static files locally
-npx serve out
+npm run dev
 ```
 
-## Troubleshooting
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-### Common Issues
+## 🏗️ Project Structure
 
-1. **404 errors**: Make sure your `next.config.js` has `output: 'export'` configured
-2. **Routing issues**: Next.js static export doesn't support dynamic routes by default
-3. **Build failures**: Check the GitHub Actions logs for specific error messages
+```
+finsentric_website/
+├── app/                    # Next.js app directory
+│   ├── globals.css        # Global styles
+│   ├── layout.tsx         # Root layout
+│   └── page.tsx           # Home page
+├── components/             # React components
+│   ├── ui/                # Reusable UI components
+│   ├── header.tsx         # Site header
+│   ├── footer.tsx         # Site footer
+│   ├── hero-section.tsx   # Hero section
+│   └── logo.tsx           # Logo component
+├── lib/                   # Utility functions
+├── hooks/                 # Custom React hooks
+└── public/                # Static assets
+    ├── FinSentricLogo_DarkTheme.svg
+    └── FinSentricLogo_LightTheme.svg
+```
 
-### Checking Deployment Status
+## 🎨 Customization
 
-1. Go to your repository on GitHub
-2. Click on the **Actions** tab
-3. You should see the "Deploy to GitHub Pages" workflow running
-4. Click on the workflow to see detailed logs
+### Theme Configuration
 
-## Custom Domain
+The site uses a dark-first approach with automatic theme switching. Theme configuration is in `app/layout.tsx`:
 
-If you want to use a custom domain:
+```tsx
+<ThemeProvider
+  attribute="class"
+  defaultTheme="dark"
+  enableSystem
+  disableTransitionOnChange
+>
+```
 
-1. Add your domain to the **Pages** settings in your repository
-2. Create a `CNAME` file in the `public` directory with your domain name
-3. Configure your DNS settings to point to GitHub Pages
+### Logo
 
-## Environment Variables
+The logo automatically switches between dark and light versions based on the current theme:
+- Dark theme: `FinSentricLogo_DarkTheme.svg`
+- Light theme: `FinSentricLogo_LightTheme.svg`
 
-If your app uses environment variables, make sure to:
+## 📝 Available Scripts
 
-1. Add them to your GitHub repository settings under **Settings** → **Secrets and variables** → **Actions**
-2. Reference them in your workflow if needed
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
+- `npm run type-check` - Run TypeScript type checking
 
-Your site will be available at: `https://[your-username].github.io/[repository-name]/` 
+## 🚀 Deployment
+
+This project can be deployed to any static hosting platform:
+
+### Vercel (Recommended)
+1. Connect your GitHub repository to Vercel
+2. Vercel will automatically detect Next.js and deploy
+3. Your site will be live at `https://finsentric.vercel.app`
+
+### Netlify
+1. Connect your GitHub repository to Netlify
+2. Build command: `npm run build`
+3. Publish directory: `.next`
+
+### Static Export
+For static hosting (GitHub Pages, etc.):
+1. Add `output: 'export'` to `next.config.js`
+2. Run `npm run build`
+3. Deploy the `out` directory
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/amazing-feature`
+3. Commit your changes: `git commit -m 'Add amazing feature'`
+4. Push to the branch: `git push origin feature/amazing-feature`
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🎯 About Finsentric
+
+Finsentric is a revolutionary platform bringing sentiment analysis to the forefront of financial decision-making. Our mission is to provide cutting-edge sentiment analysis tools that empower financial professionals to make more informed decisions.
+
+**Coming Soon!** 🚀 
